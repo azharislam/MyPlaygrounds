@@ -44,3 +44,33 @@ print(rect.center)
 rect.center = Point(x: 10, y: 15)
 print(rect.center)
 print(rect.origin)
+
+let UIFontTextStyleHeadline = "UIFontTextStyleHeadline"
+let UIFontTextStyleBody = "UIFontTextStyleBody"
+let UIFontTextStyleFootnote = "UIFontTextStyleFootnote"
+
+enum Text {
+  case headline
+  case body
+  case footnote
+  
+var style: String {
+    
+    switch self {
+    case .headline:
+        return UIFontTextStyleHeadline
+    case .body:
+        return UIFontTextStyleBody
+    case .footnote:
+        return UIFontTextStyleFootnote
+    }
+    }
+}
+
+//Lazy stored properties
+
+import Foundation
+
+class ReadItLaterNetworkingClient {
+    lazy var session: URLSession = URLSession(configuration: .default)
+}

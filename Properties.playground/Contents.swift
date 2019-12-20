@@ -74,3 +74,27 @@ import Foundation
 class ReadItLaterNetworkingClient {
     lazy var session: URLSession = URLSession(configuration: .default)
 }
+
+import UIKit
+class TemperatureController: UIViewController {
+    var temperature: Double = 0 {
+        didSet {
+            if temperature > 40 {
+                view.backgroundColor = UIColor.red
+            }
+        }
+        willSet {
+            
+        }
+    }
+    
+    init(temperature: Double) {
+        self.temperature = temperature
+        super.init()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+    }
+}

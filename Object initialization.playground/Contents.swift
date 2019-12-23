@@ -69,3 +69,51 @@ struct Rectangle {
 }
 
 
+//Designated initializers - Reference types
+
+class Vehicle {
+    let name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    convenience init() {
+        self.init(name: "Unnamed")
+    }
+}
+
+Vehicle()
+
+//Designated initializers - Inheritance
+
+class Car: Vehicle {
+    let numOfDoors: Int
+    
+    init(name: String, numOfDoors: Int) {
+        self.numOfDoors = numOfDoors
+        super.init(name: name)
+    }
+    
+    convenience override init(name: String) {
+        self.init(name: name, numOfDoors: 4)
+    }
+    
+    convenience init() {
+        self.init(name: "Unnamed")
+    }
+}
+
+//Required Initializers
+import UIKit
+
+class ViewController: UIViewController {
+    init(){
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+

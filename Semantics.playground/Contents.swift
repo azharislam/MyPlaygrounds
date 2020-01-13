@@ -4,6 +4,11 @@ import UIKit
 struct Point {
     var x: Double
     var y: Double
+    
+    //this is a value type but this method is trying to mutate it 
+    mutating func moveLeft(steps: Double) {
+        x -= steps
+    }
 }
 
 var p1 = Point(x: 1, y: 2)

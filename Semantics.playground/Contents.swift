@@ -114,3 +114,24 @@ struct Shape {
 
 let square = Shape(x: 0, y: 0, width: 100, height: 100, color: .red)
 square.view.backgroundColor = .blue
+
+// Type Methods - Value Types
+import Foundation
+
+struct Map {
+    static let origin = Point(x: 0, y: 0)
+    
+    static func distance(to point: Point) -> Double {
+        let horizontalDistance = origin.x - point.x
+        let verticalDistance = origin.y - point.y
+        
+        func square(_ value: Double) -> Double {
+            return value * value
+        }
+        
+        let horizontalDistanceSquared = square(horizontalDistance)
+        let verticalDistanceSquared = square(verticalDistance)
+        
+        return sqrt(horizontalDistanceSquared + verticalDistanceSquared)
+    }
+}

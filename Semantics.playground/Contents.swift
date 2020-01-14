@@ -11,13 +11,13 @@ import UIKit
 //    }
 //}
 
-var p1 = Point(x: 1, y: 2)
-var p2 = p1
-
-p1.x = 4
-p2.x
-
-let p3 = Point(x: 2, y: 4) //immutable
+//var p1 = Point(x: 1, y: 2)
+//var p2 = p1
+//
+//p1.x = 4
+//p2.x
+//
+//let p3 = Point(x: 2, y: 4) //immutable
 
 struct AnotherPoint {
     let x: Double
@@ -135,3 +135,39 @@ struct Map {
         return sqrt(horizontalDistanceSquared + verticalDistanceSquared)
     }
 }
+
+//Type Methods - Reference Types
+
+class Calculator {
+    class func squareRoot (_ value: Double) -> Double {
+        return sqrt(value)
+    }
+    
+    final class func square(_ value: Double) -> Double {
+        return value * value
+    }
+}
+
+Calculator.squareRoot(64)
+
+class NewtonCalculator: Calculator {
+    override class func squareRoot(_ value: Double) -> Double {
+        var guess = 1.0
+        var newGuess: Double
+        
+        while true {
+            newGuess = (value/guess + guess)/2
+            if guess == newGuess {
+                return guess
+            }
+            
+            guess = newGuess
+        }
+    }
+    
+    override class func square(_ value: Double) -> Double {
+        return 1
+    }
+}
+
+NewtonCalculator.squareRoot(64)
